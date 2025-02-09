@@ -7,7 +7,7 @@ export class MemberQueueService implements OnModuleInit {
     constructor(@InjectQueue('member') private memberQueue: Queue) {}
 
     async addMemberJob(data: any): Promise<any> {
-        await this.memberQueue.add('loginMemberJob', data);
+        await this.memberQueue.add('createMemberJob', data);
     }
 
     onModuleInit(): any {
