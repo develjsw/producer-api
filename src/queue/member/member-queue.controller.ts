@@ -10,7 +10,11 @@ export class MemberQueueController {
     async createLoginMember(
         @Body(new ValidationPipe({ transform: true }))
         createMemberDto: CreateMemberDto
-    ): Promise<any> {
-        return await this.memberService.addMemberJob(createMemberDto);
+    ): Promise<{ jobId: string | number }> {
+        const job = await this.memberService.addMemberJob(createMemberDto);
+
+        return {
+            jobId: job.id
+        };
     }
 }
